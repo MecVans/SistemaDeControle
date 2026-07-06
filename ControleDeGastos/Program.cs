@@ -23,6 +23,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Seção para garantir que as tabelas serão criadas no Docker
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    context.Database.EnsureCreated(); // Cria o arquivo e todas as tabelas automaticamente se não existirem
+}
+
 // Ativa a política de segurança do CORS
 app.UseCors("PermitirReact");
 

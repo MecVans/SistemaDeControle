@@ -1,18 +1,18 @@
-version: '3.8'
-
 services:
   backend:
     build: ./ControleDeGastos
     ports:
       - "5000:5000"
-      - "5001:5001"
+      - "5211:5211"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:5000
+      - ASPNETCORE_URLS=http://+:5211
 
   frontend:
     build: ./ControleDeGastosFront
     ports:
       - "5173:80"
+    environment:
+      - VITE_API_URL=http://localhost:5211
     depends_on:
       - backend

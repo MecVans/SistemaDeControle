@@ -4,6 +4,7 @@ import api from '../api';
 interface Pessoa {
   id: string;
   nome: string;
+  idade: number;
 }
 
 interface Transacao {
@@ -107,10 +108,16 @@ export default function GerenciamentoTransacoes({ onAtualizarDados }: Gerenciame
           <option value="receita">Receita</option>
         </select>
 
-        <select value={pessoaId} onChange={(e) => setPessoaId(e.target.value)} style={{ padding: '8px' }}>
-          <option value="">Selecione a Pessoa Responsável</option>
-          {pessoas.map(p => (
-            <option key={p.id} value={p.id}>{p.nome}</option>
+        <select 
+          value={pessoaId} 
+          onChange={(e) => setPessoaId(e.target.value)}
+          style={{ padding: '8px', width: '280px' }}
+        >
+          <option value="">Selecione um Morador</option>
+          {pessoas.map((pessoa) => (
+            <option key={pessoa.id} value={pessoa.id}>
+              {pessoa.nome} (ID: {pessoa.id} • {pessoa.idade} anos)
+            </option>
           ))}
         </select>
 
