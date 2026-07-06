@@ -1,0 +1,18 @@
+# Pasta de dependências do Front-end
+node_modules/
+dist/
+
+# Pastas de compilação do Back-end
+bin/
+obj/
+
+# Arquivos locais de banco de dados (SQLite)
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Arquivos do VS Code e do sistema operacional
+.vscode/
+.DS_Store
+Thumbs.db
